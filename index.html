@@ -10,6 +10,7 @@
 <style>
 :root {
   --bg: #0b0b0b;
+  --card: #111;
   --text: #ffffff;
   --muted: #b3b3b3;
   --accent: #4f46e5;
@@ -19,6 +20,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -26,7 +31,7 @@ body {
   color: var(--text);
 }
 
-/* ---------- NAVBAR ---------- */
+/* ---------- NAV ---------- */
 nav {
   max-width: 1200px;
   margin: auto;
@@ -70,7 +75,7 @@ header {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   align-items: center;
-  gap: 50px;
+  gap: 60px;
 }
 
 @media (max-width: 900px) {
@@ -80,7 +85,10 @@ header {
   }
 }
 
-/* LEFT */
+.hero-left {
+  animation: fadeLeft 1.2s ease forwards;
+}
+
 .hero-left small {
   color: var(--accent);
   letter-spacing: 2px;
@@ -103,23 +111,25 @@ header {
   margin-bottom: 25px;
 }
 
-/* SOCIAL ICONS */
 .socials {
   display: flex;
-  gap: 18px;
+  gap: 20px;
 }
 
 .socials a {
   color: var(--muted);
-  font-size: 18px;
   text-decoration: none;
+  font-size: 15px;
 }
 
 .socials a:hover {
   color: var(--text);
 }
 
-/* RIGHT */
+.hero-right {
+  animation: fadeRight 1.2s ease forwards;
+}
+
 .hero-right img {
   width: 100%;
   max-width: 360px;
@@ -127,11 +137,110 @@ header {
   filter: grayscale(100%) contrast(1.1);
 }
 
-/* DIVIDER */
+/* ---------- DIVIDER ---------- */
 .divider {
-  margin-top: 60px;
+  margin-top: 70px;
   height: 1px;
   background: #222;
+}
+
+/* ---------- SECTIONS ---------- */
+section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 80px 20px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+/* ---------- SKILLS ---------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.skill-card {
+  background: var(--card);
+  padding: 25px;
+  border-radius: 14px;
+  transition: transform 0.3s;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+}
+
+.skill-card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.skill-card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---------- PROJECTS ---------- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: var(--card);
+  padding: 30px;
+  border-radius: 18px;
+  transition: transform 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+.project-card h3 {
+  margin-top: 0;
+}
+
+.project-card ul {
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.project-card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  text-align: center;
+  padding: 50px 20px;
+  color: var(--muted);
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 </style>
 </head>
@@ -141,41 +250,114 @@ header {
 <nav>
   <div class="logo">&lt;/&gt;</div>
   <ul>
-    <li><a href="#home">Home</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<header id="home">
+<header>
   <div class="hero">
-    
-    <!-- LEFT -->
     <div class="hero-left">
       <small>WELCOME TO MY PORTFOLIO 👋</small>
-      <h1>
-        Mahidhar<br>
-        <span>Reddy</span>
-      </h1>
+      <h1>Mahidhar<br><span>Reddy</span></h1>
       <p>Flutter Developer</p>
-
       <div class="socials">
         <a href="https://github.com/m36529008-tech" target="_blank">GitHub</a>
-        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <a href="#">LinkedIn</a>
         <a href="mailto:mahidhar407@gmail.com">Email</a>
       </div>
     </div>
 
-    <!-- RIGHT -->
     <div class="hero-right">
       <img src="profile.png" alt="Mahidhar Reddy">
     </div>
-
   </div>
 
   <div class="divider"></div>
 </header>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>Flutter</h3>
+      <p>UI, Widgets, Navigation</p>
+    </div>
+    <div class="skill-card">
+      <h3>Dart</h3>
+      <p>Basics, OOP concepts</p>
+    </div>
+    <div class="skill-card">
+      <h3>Theming</h3>
+      <p>Light & Dark mode</p>
+    </div>
+    <div class="skill-card">
+      <h3>Flutter Web</h3>
+      <p>Web deployment</p>
+    </div>
+    <div class="skill-card">
+      <h3>Git & GitHub</h3>
+      <p>Version control</p>
+    </div>
+    <div class="skill-card">
+      <h3>IT Support</h3>
+      <p>L1 & Service Desk</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>Flutter Portfolio App</h3>
+      <ul>
+        <li>Flutter + Dart</li>
+        <li>Animations & theming</li>
+        <li>Flutter Web (GitHub Pages)</li>
+      </ul>
+      <p>
+        <a href="https://github.com/m36529008-tech/flutter-portfolio" target="_blank">GitHub</a>
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Task Manager (CRUD)</h3>
+      <ul>
+        <li>Create, Read, Update, Delete</li>
+        <li>State management using setState</li>
+        <li>Clean Flutter UI</li>
+      </ul>
+      <p>
+        <a href="https://github.com/m36529008-tech" target="_blank">GitHub</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: mahidhar407@gmail.com</p>
+  <p>Phone: +91 9398132203</p>
+</section>
+
+<footer>
+© 2025 Mahidhar Reddy · Flutter Developer
+</footer>
+
+<script>
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.2 });
+
+sections.forEach(sec => observer.observe(sec));
+</script>
 
 </body>
 </html>
