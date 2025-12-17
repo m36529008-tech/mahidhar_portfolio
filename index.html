@@ -5,77 +5,91 @@
 <title>Mahidhar Reddy | Flutter Developer</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+/* ================= THEME ================= */
 :root {
-  --bg: #0b0b0b;
-  --card: #111;
+  --bg: #070707;
+  --card: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.08);
   --text: #ffffff;
-  --muted: #b3b3b3;
-  --accent: #4f46e5;
+  --muted: #a1a1aa;
+  --accent: #6366f1;
+  --accent2: #22d3ee;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: var(--bg);
+  font-family: 'Inter', sans-serif;
+  background:
+    radial-gradient(700px 350px at 15% -10%, #4f46e544, transparent),
+    radial-gradient(700px 350px at 85% 10%, #22d3ee33, transparent),
+    var(--bg);
   color: var(--text);
+  overflow-x: hidden;
+  cursor: none;
 }
 
-/* ---------- NAV ---------- */
+/* ================= CUSTOM CURSOR ================= */
+.cursor {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--accent2);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 2000;
+  transition: transform 0.1s ease;
+}
+
+/* ================= NAV ================= */
 nav {
-  max-width: 1200px;
-  margin: auto;
-  padding: 25px 20px;
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 22px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 22px;
+  z-index: 999;
 }
 
-nav .logo {
-  font-weight: 700;
-  font-size: 20px;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li a {
+nav a {
   color: var(--muted);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 14px;
 }
 
-nav ul li a:hover {
+nav a:hover {
   color: var(--text);
 }
 
-/* ---------- HERO ---------- */
+/* ================= HERO ================= */
 header {
-  max-width: 1200px;
-  margin: auto;
-  padding: 80px 20px 40px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 20px;
 }
 
 .hero {
+  max-width: 1200px;
+  width: 100%;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
   align-items: center;
-  gap: 60px;
 }
 
 @media (max-width: 900px) {
@@ -85,73 +99,38 @@ header {
   }
 }
 
-.hero-left {
-  animation: fadeLeft 1.2s ease forwards;
+.hero h1 {
+  font-size: 64px;
+  line-height: 1.05;
+  margin: 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-.hero-left small {
-  color: var(--accent);
-  letter-spacing: 2px;
-  font-size: 13px;
-}
-
-.hero-left h1 {
-  font-size: 56px;
-  line-height: 1.1;
-  margin: 15px 0;
-}
-
-.hero-left h1 span {
-  font-weight: 800;
-}
-
-.hero-left p {
-  color: var(--muted);
+.hero p {
+  margin-top: 20px;
   font-size: 18px;
-  margin-bottom: 25px;
-}
-
-.socials {
-  display: flex;
-  gap: 20px;
-}
-
-.socials a {
   color: var(--muted);
-  text-decoration: none;
-  font-size: 15px;
+  max-width: 520px;
 }
 
-.socials a:hover {
-  color: var(--text);
-}
-
-.hero-right {
-  animation: fadeRight 1.2s ease forwards;
-}
-
-.hero-right img {
+.hero img {
   width: 100%;
-  max-width: 360px;
-  border-radius: 18px;
+  max-width: 380px;
+  border-radius: 22px;
   filter: grayscale(100%) contrast(1.1);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
 }
 
-/* ---------- DIVIDER ---------- */
-.divider {
-  margin-top: 70px;
-  height: 1px;
-  background: #222;
-}
-
-/* ---------- SECTIONS ---------- */
+/* ================= SECTIONS ================= */
 section {
   max-width: 1200px;
   margin: auto;
-  padding: 80px 20px;
+  padding: 120px 20px;
   opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s;
+  transform: translateY(60px);
+  transition: 1s ease;
 }
 
 section.show {
@@ -160,186 +139,120 @@ section.show {
 }
 
 section h2 {
-  font-size: 32px;
-  margin-bottom: 40px;
+  font-size: 38px;
+  margin-bottom: 50px;
 }
 
-/* ---------- SKILLS ---------- */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-}
-
-.skill-card {
+/* ================= CARD ================= */
+.card {
   background: var(--card);
-  padding: 25px;
-  border-radius: 14px;
-  transition: transform 0.3s;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 34px;
+  transition: transform 0.3s ease;
 }
 
-.skill-card:hover {
-  transform: translateY(-6px);
+.card:hover {
+  transform: translateY(-10px);
 }
 
-.skill-card h3 {
-  margin: 0 0 10px;
-  font-size: 18px;
+/* ================= SKILLS ================= */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 26px;
 }
 
-.skill-card p {
+.skill span {
+  display: block;
   color: var(--muted);
   font-size: 14px;
 }
 
-/* ---------- PROJECTS ---------- */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-.project-card {
-  background: var(--card);
-  padding: 30px;
-  border-radius: 18px;
-  transition: transform 0.3s;
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-}
-
-.project-card h3 {
+/* ================= PROJECT CASE STUDY ================= */
+.project h3 {
   margin-top: 0;
 }
 
-.project-card ul {
+.project ul {
   padding-left: 18px;
   color: var(--muted);
 }
 
-.project-card a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-/* ---------- FOOTER ---------- */
+/* ================= FOOTER ================= */
 footer {
   text-align: center;
-  padding: 50px 20px;
+  padding: 60px 20px;
   color: var(--muted);
-}
-
-/* ---------- ANIMATIONS ---------- */
-@keyframes fadeLeft {
-  from { opacity: 0; transform: translateX(-40px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes fadeRight {
-  from { opacity: 0; transform: translateX(40px); }
-  to { opacity: 1; transform: translateX(0); }
 }
 </style>
 </head>
 
 <body>
 
+<div class="cursor"></div>
+
 <nav>
-  <div class="logo">&lt;/&gt;</div>
-  <ul>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
 </nav>
 
 <header>
   <div class="hero">
-    <div class="hero-left">
-      <small>WELCOME TO MY PORTFOLIO 👋</small>
-      <h1>Mahidhar<br><span>Reddy</span></h1>
-      <p>Flutter Developer</p>
-      <div class="socials">
-        <a href="https://github.com/m36529008-tech" target="_blank">GitHub</a>
-        <a href="#">LinkedIn</a>
-        <a href="mailto:mahidhar407@gmail.com">Email</a>
-      </div>
+    <div>
+      <h1>Mahidhar<br>Reddy</h1>
+      <p>
+        Flutter Developer focused on premium UI, animations, theming,
+        and building production-ready mobile & web applications.
+      </p>
     </div>
-
-    <div class="hero-right">
-      <img src="profile.png" alt="Mahidhar Reddy">
-    </div>
+    <img src="profile.png" alt="Mahidhar Reddy">
   </div>
-
-  <div class="divider"></div>
 </header>
 
 <section id="skills">
   <h2>Skills</h2>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <h3>Flutter</h3>
-      <p>UI, Widgets, Navigation</p>
-    </div>
-    <div class="skill-card">
-      <h3>Dart</h3>
-      <p>Basics, OOP concepts</p>
-    </div>
-    <div class="skill-card">
-      <h3>Theming</h3>
-      <p>Light & Dark mode</p>
-    </div>
-    <div class="skill-card">
-      <h3>Flutter Web</h3>
-      <p>Web deployment</p>
-    </div>
-    <div class="skill-card">
-      <h3>Git & GitHub</h3>
-      <p>Version control</p>
-    </div>
-    <div class="skill-card">
-      <h3>IT Support</h3>
-      <p>L1 & Service Desk</p>
-    </div>
+  <div class="skills">
+    <div class="card skill">Flutter<span>Widgets, UI, Navigation</span></div>
+    <div class="card skill">Dart<span>OOP, async basics</span></div>
+    <div class="card skill">Theming<span>Light & Dark mode</span></div>
+    <div class="card skill">Flutter Web<span>GitHub Pages</span></div>
+    <div class="card skill">Git & GitHub<span>Version control</span></div>
+    <div class="card skill">IT Support<span>L1, Service Desk</span></div>
   </div>
 </section>
 
 <section id="projects">
-  <h2>Projects</h2>
-  <div class="project-grid">
-    <div class="project-card">
-      <h3>Flutter Portfolio App</h3>
-      <ul>
-        <li>Flutter + Dart</li>
-        <li>Animations & theming</li>
-        <li>Flutter Web (GitHub Pages)</li>
-      </ul>
-      <p>
-        <a href="https://github.com/m36529008-tech/flutter-portfolio" target="_blank">GitHub</a>
-      </p>
-    </div>
+  <h2>Projects (Case Study)</h2>
 
-    <div class="project-card">
-      <h3>Task Manager (CRUD)</h3>
-      <ul>
-        <li>Create, Read, Update, Delete</li>
-        <li>State management using setState</li>
-        <li>Clean Flutter UI</li>
-      </ul>
-      <p>
-        <a href="https://github.com/m36529008-tech" target="_blank">GitHub</a>
-      </p>
-    </div>
+  <div class="card project">
+    <h3>Flutter Portfolio App</h3>
+    <ul>
+      <li>Problem: Need a modern developer portfolio</li>
+      <li>Solution: Built Flutter app with animations & theming</li>
+      <li>Tech: Flutter, Dart, Material UI</li>
+      <li>Deployment: Flutter Web on GitHub Pages</li>
+    </ul>
+  </div>
+
+  <div class="card project">
+    <h3>Task Manager (CRUD App)</h3>
+    <ul>
+      <li>Problem: Simple task tracking</li>
+      <li>Solution: CRUD-based Flutter application</li>
+      <li>Features: Add, edit, delete tasks</li>
+      <li>State: Managed using setState</li>
+    </ul>
   </div>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>Email: mahidhar407@gmail.com</p>
-  <p>Phone: +91 9398132203</p>
+  <div class="card">
+    📧 mahidhar407@gmail.com<br>
+    📞 +91 9398132203
+  </div>
 </section>
 
 <footer>
@@ -347,12 +260,17 @@ footer {
 </footer>
 
 <script>
+/* Cursor */
+const cursor = document.querySelector(".cursor");
+document.addEventListener("mousemove", e => {
+  cursor.style.transform = `translate(${e.clientX - 9}px, ${e.clientY - 9}px)`;
+});
+
+/* Reveal sections */
 const sections = document.querySelectorAll("section");
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add("show");
   });
 }, { threshold: 0.2 });
 
