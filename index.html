@@ -1,95 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <title>Mahidhar Reddy | Flutter Developer</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-/* ================= THEME ================= */
 :root {
-  --bg: #070707;
-  --card: rgba(255,255,255,0.05);
-  --border: rgba(255,255,255,0.08);
+  --bg: #0b0b0b;
+  --card: #121212;
   --text: #ffffff;
-  --muted: #a1a1aa;
+  --muted: #b3b3b3;
   --accent: #6366f1;
-  --accent2: #22d3ee;
 }
 
+/* ---------- GLOBAL ---------- */
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background:
-    radial-gradient(700px 350px at 15% -10%, #4f46e544, transparent),
-    radial-gradient(700px 350px at 85% 10%, #22d3ee33, transparent),
-    var(--bg);
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
   color: var(--text);
-  overflow-x: hidden;
-  cursor: none;
 }
 
-/* ================= CUSTOM CURSOR ================= */
-.cursor {
-  width: 18px;
-  height: 18px;
-  border: 2px solid var(--accent2);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 2000;
-  transition: transform 0.1s ease;
-}
-
-/* ================= NAV ================= */
+/* ---------- NAV ---------- */
 nav {
-  position: fixed;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 10px 22px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 25px 20px;
   display: flex;
-  gap: 22px;
-  z-index: 999;
+  justify-content: space-between;
+  align-items: center;
 }
 
-nav a {
+nav .logo {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
   color: var(--muted);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 500;
 }
 
-nav a:hover {
+nav ul li a:hover {
   color: var(--text);
 }
 
-/* ================= HERO ================= */
+/* ---------- HERO ---------- */
 header {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 140px 20px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 80px 20px 40px;
 }
 
 .hero {
-  max-width: 1200px;
-  width: 100%;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 80px;
   align-items: center;
+  gap: 60px;
 }
 
 @media (max-width: 900px) {
@@ -99,38 +82,93 @@ header {
   }
 }
 
-.hero h1 {
-  font-size: 64px;
-  line-height: 1.05;
-  margin: 0;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text;
-  color: transparent;
+/* LEFT */
+.hero-left small {
+  color: var(--accent);
+  letter-spacing: 2px;
+  font-size: 13px;
 }
 
-.hero p {
-  margin-top: 20px;
-  font-size: 18px;
+.hero-left h1 {
+  font-size: 56px;
+  line-height: 1.1;
+  margin: 15px 0;
+}
+
+.hero-left h1 span {
+  font-weight: 800;
+}
+
+.hero-left p {
   color: var(--muted);
-  max-width: 520px;
+  font-size: 18px;
+  margin-bottom: 25px;
 }
 
-.hero img {
-  width: 100%;
-  max-width: 380px;
-  border-radius: 22px;
-  filter: grayscale(100%) contrast(1.1);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+.socials {
+  display: flex;
+  gap: 20px;
 }
 
-/* ================= SECTIONS ================= */
+.socials a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.socials a:hover {
+  color: var(--text);
+}
+
+/* RIGHT – PHOTO */
+.hero-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image::before {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.45), transparent 70%);
+  filter: blur(50px);
+  z-index: 0;
+}
+
+.hero-image img {
+  width: 360px;
+  max-width: 90%;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 25px 50px rgba(0,0,0,0.6));
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ---------- FLOAT ANIMATION ---------- */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+/* ---------- DIVIDER ---------- */
+.divider {
+  margin-top: 70px;
+  height: 1px;
+  background: #222;
+}
+
+/* ---------- SECTIONS ---------- */
 section {
   max-width: 1200px;
   margin: auto;
-  padding: 120px 20px;
+  padding: 80px 20px;
   opacity: 0;
-  transform: translateY(60px);
-  transition: 1s ease;
+  transform: translateY(40px);
+  transition: 0.8s;
 }
 
 section.show {
@@ -139,50 +177,54 @@ section.show {
 }
 
 section h2 {
-  font-size: 38px;
-  margin-bottom: 50px;
+  font-size: 32px;
+  margin-bottom: 40px;
 }
 
-/* ================= CARD ================= */
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 34px;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-}
-
-/* ================= SKILLS ================= */
-.skills {
+/* ---------- SKILLS ---------- */
+.skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
 }
 
-.skill span {
-  display: block;
-  color: var(--muted);
-  font-size: 14px;
+.skill-card {
+  background: var(--card);
+  padding: 25px;
+  border-radius: 14px;
+  transition: transform 0.3s;
 }
 
-/* ================= PROJECT CASE STUDY ================= */
-.project h3 {
-  margin-top: 0;
+.skill-card:hover {
+  transform: translateY(-6px);
 }
 
-.project ul {
-  padding-left: 18px;
-  color: var(--muted);
+.skill-card h3 {
+  margin: 0 0 10px;
 }
 
-/* ================= FOOTER ================= */
+/* ---------- PROJECTS ---------- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: var(--card);
+  padding: 30px;
+  border-radius: 18px;
+  transition: transform 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+/* ---------- FOOTER ---------- */
 footer {
   text-align: center;
-  padding: 60px 20px;
+  padding: 50px 20px;
   color: var(--muted);
 }
 </style>
@@ -190,69 +232,67 @@ footer {
 
 <body>
 
-<div class="cursor"></div>
-
 <nav>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
+  <div class="logo">&lt;/&gt;</div>
+  <ul>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
 <header>
   <div class="hero">
-    <div>
-      <h1>Mahidhar<br>Reddy</h1>
-      <p>
-        Flutter Developer focused on premium UI, animations, theming,
-        and building production-ready mobile & web applications.
-      </p>
+
+    <div class="hero-left">
+      <small>WELCOME TO MY PORTFOLIO 👋</small>
+      <h1>Mahidhar<br><span>Reddy</span></h1>
+      <p>Flutter Developer</p>
+      <div class="socials">
+        <a href="https://github.com/m36529008-tech" target="_blank">GitHub</a>
+        <a href="mailto:mahidhar407@gmail.com">Email</a>
+      </div>
     </div>
-    <img src="profile.png" alt="Mahidhar Reddy">
+
+    <div class="hero-image">
+      <img src="profile.png" alt="Mahidhar Reddy">
+    </div>
+
   </div>
+
+  <div class="divider"></div>
 </header>
 
 <section id="skills">
   <h2>Skills</h2>
-  <div class="skills">
-    <div class="card skill">Flutter<span>Widgets, UI, Navigation</span></div>
-    <div class="card skill">Dart<span>OOP, async basics</span></div>
-    <div class="card skill">Theming<span>Light & Dark mode</span></div>
-    <div class="card skill">Flutter Web<span>GitHub Pages</span></div>
-    <div class="card skill">Git & GitHub<span>Version control</span></div>
-    <div class="card skill">IT Support<span>L1, Service Desk</span></div>
+  <div class="skills-grid">
+    <div class="skill-card"><h3>Flutter</h3>UI, Widgets</div>
+    <div class="skill-card"><h3>Dart</h3>OOP Basics</div>
+    <div class="skill-card"><h3>Theming</h3>Light & Dark</div>
+    <div class="skill-card"><h3>Flutter Web</h3>GitHub Pages</div>
+    <div class="skill-card"><h3>Git & GitHub</h3>Version Control</div>
+    <div class="skill-card"><h3>IT Support</h3>L1 & Service Desk</div>
   </div>
 </section>
 
 <section id="projects">
-  <h2>Projects (Case Study)</h2>
-
-  <div class="card project">
-    <h3>Flutter Portfolio App</h3>
-    <ul>
-      <li>Problem: Need a modern developer portfolio</li>
-      <li>Solution: Built Flutter app with animations & theming</li>
-      <li>Tech: Flutter, Dart, Material UI</li>
-      <li>Deployment: Flutter Web on GitHub Pages</li>
-    </ul>
-  </div>
-
-  <div class="card project">
-    <h3>Task Manager (CRUD App)</h3>
-    <ul>
-      <li>Problem: Simple task tracking</li>
-      <li>Solution: CRUD-based Flutter application</li>
-      <li>Features: Add, edit, delete tasks</li>
-      <li>State: Managed using setState</li>
-    </ul>
+  <h2>Projects</h2>
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>Flutter Portfolio App</h3>
+      <p>Flutter + Dart, animations, theming, web deployment.</p>
+    </div>
+    <div class="project-card">
+      <h3>Task Manager (CRUD)</h3>
+      <p>Create, read, update, delete tasks using Flutter.</p>
+    </div>
   </div>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <div class="card">
-    📧 mahidhar407@gmail.com<br>
-    📞 +91 9398132203
-  </div>
+  <p>Email: mahidhar407@gmail.com</p>
+  <p>Phone: +91 9398132203</p>
 </section>
 
 <footer>
@@ -260,17 +300,12 @@ footer {
 </footer>
 
 <script>
-/* Cursor */
-const cursor = document.querySelector(".cursor");
-document.addEventListener("mousemove", e => {
-  cursor.style.transform = `translate(${e.clientX - 9}px, ${e.clientY - 9}px)`;
-});
-
-/* Reveal sections */
 const sections = document.querySelectorAll("section");
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add("show");
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
   });
 }, { threshold: 0.2 });
 
