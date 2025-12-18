@@ -18,7 +18,6 @@
 
 /* ---------- GLOBAL ---------- */
 * { box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -102,12 +101,12 @@ header {
 .hero-left p {
   color: var(--muted);
   font-size: 18px;
-  margin-bottom: 25px;
 }
 
 .socials {
   display: flex;
   gap: 20px;
+  margin-top: 20px;
 }
 
 .socials a {
@@ -119,12 +118,23 @@ header {
   color: var(--text);
 }
 
+/* RESUME BUTTON */
+.resume-btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 22px;
+  background: var(--accent);
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
 /* RIGHT – PHOTO */
 .hero-image {
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .hero-image::before {
@@ -135,7 +145,6 @@ header {
   border-radius: 50%;
   background: radial-gradient(circle, rgba(99,102,241,0.45), transparent 70%);
   filter: blur(50px);
-  z-index: 0;
 }
 
 .hero-image img {
@@ -147,18 +156,10 @@ header {
   animation: float 4s ease-in-out infinite;
 }
 
-/* ---------- FLOAT ANIMATION ---------- */
 @keyframes float {
   0% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
   100% { transform: translateY(0); }
-}
-
-/* ---------- DIVIDER ---------- */
-.divider {
-  margin-top: 70px;
-  height: 1px;
-  background: #222;
 }
 
 /* ---------- SECTIONS ---------- */
@@ -181,6 +182,13 @@ section h2 {
   margin-bottom: 40px;
 }
 
+.card {
+  background: var(--card);
+  padding: 30px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
 /* ---------- SKILLS ---------- */
 .skills-grid {
   display: grid;
@@ -188,37 +196,11 @@ section h2 {
   gap: 20px;
 }
 
-.skill-card {
-  background: var(--card);
-  padding: 25px;
-  border-radius: 14px;
-  transition: transform 0.3s;
-}
-
-.skill-card:hover {
-  transform: translateY(-6px);
-}
-
-.skill-card h3 {
-  margin: 0 0 10px;
-}
-
 /* ---------- PROJECTS ---------- */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
-}
-
-.project-card {
-  background: var(--card);
-  padding: 30px;
-  border-radius: 18px;
-  transition: transform 0.3s;
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
 }
 
 /* ---------- FOOTER ---------- */
@@ -235,64 +217,102 @@ footer {
 <nav>
   <div class="logo">&lt;/&gt;</div>
   <ul>
+    <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <header>
   <div class="hero">
-
     <div class="hero-left">
       <small>WELCOME TO MY PORTFOLIO 👋</small>
       <h1>Mahidhar<br><span>Reddy</span></h1>
       <p>Flutter Developer</p>
+
       <div class="socials">
         <a href="https://github.com/m36529008-tech" target="_blank">GitHub</a>
         <a href="mailto:mahidhar407@gmail.com">Email</a>
       </div>
+
+      <a href="Mahidhar_Reddy_Flutter_Developer_Fresher.pdf" class="resume-btn" download>
+        📄 Download Resume
+      </a>
     </div>
 
     <div class="hero-image">
       <img src="profile.png" alt="Mahidhar Reddy">
     </div>
-
   </div>
-
-  <div class="divider"></div>
 </header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">
+    Flutter Developer with hands-on experience in UI design, theming,
+    animations, and CRUD-based applications. Previously worked in IT Support
+    and Service Desk roles, bringing strong problem-solving skills and
+    enterprise exposure.
+  </div>
+</section>
 
 <section id="skills">
   <h2>Skills</h2>
   <div class="skills-grid">
-    <div class="skill-card"><h3>Flutter</h3>UI, Widgets</div>
-    <div class="skill-card"><h3>Dart</h3>OOP Basics</div>
-    <div class="skill-card"><h3>Theming</h3>Light & Dark</div>
-    <div class="skill-card"><h3>Flutter Web</h3>GitHub Pages</div>
-    <div class="skill-card"><h3>Git & GitHub</h3>Version Control</div>
-    <div class="skill-card"><h3>IT Support</h3>L1 & Service Desk</div>
+    <div class="card">Flutter</div>
+    <div class="card">Dart</div>
+    <div class="card">Material UI</div>
+    <div class="card">Flutter Web</div>
+    <div class="card">Git & GitHub</div>
+    <div class="card">IT Support (L1)</div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+
+  <div class="card">
+    <h3>Junior IT Support Engineer</h3>
+    <p><strong>Vishwa Samudra Engineering Pvt. Ltd – Kerala</strong></p>
+    <ul>
+      <li>L1 technical support and troubleshooting</li>
+      <li>System and user issue resolution</li>
+      <li>Enterprise production environment exposure</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Service Desk Engineer</h3>
+    <p><strong>VDA Info Solutions Pvt. Ltd (Client: HDFC Bank)</strong></p>
+    <ul>
+      <li>Ticket handling and incident management</li>
+      <li>End-user support for banking systems</li>
+      <li>Improved communication and problem-solving skills</li>
+    </ul>
   </div>
 </section>
 
 <section id="projects">
   <h2>Projects</h2>
   <div class="project-grid">
-    <div class="project-card">
+    <div class="card">
       <h3>Flutter Portfolio App</h3>
       <p>Flutter + Dart, animations, theming, web deployment.</p>
     </div>
-    <div class="project-card">
+    <div class="card">
       <h3>Task Manager (CRUD)</h3>
-      <p>Create, read, update, delete tasks using Flutter.</p>
+      <p>Create, read, update, and delete tasks using Flutter.</p>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>Email: mahidhar407@gmail.com</p>
-  <p>Phone: +91 9398132203</p>
+  <div class="card">
+    📧 mahidhar407@gmail.com<br>
+    📞 +91 9398132203
+  </div>
 </section>
 
 <footer>
@@ -303,9 +323,7 @@ footer {
 const sections = document.querySelectorAll("section");
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
+    if (entry.isIntersecting) entry.target.classList.add("show");
   });
 }, { threshold: 0.2 });
 
